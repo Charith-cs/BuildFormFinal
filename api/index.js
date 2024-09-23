@@ -38,16 +38,23 @@ const upload = multer({
 });
 
 // Endpoint
-/*app.post('/upload', upload.single('file'), (req, res) => {
-    if (!req.file) {
-        return res.status(400).json({ error: 'No file uploaded' });
-    }
-    res.json({ filePath: `uploads/${req.file.filename}` });
-});*/
 app.post('/upload', (req, res) => {
-    console.log('Upload request received:', req.body);
-    res.send('Upload endpoint hit');
+    console.log('Headers:', req.headers);
+    console.log('Body:', req.body);
+    upload.single('file')(req, res, (err) => {
+        if (err) {
+            console.error('Multer error:', err);
+            return res.status(400).json({ error: 'File upload error' });
+        }
+        console.log('File uploaded:', req.file);
+        if (!req.file) {
+            return res.status(400).json({ error: 'No file uploaded' });
+        }
+        res.json({ filePath: `uploads/${req.file.filename}` });
+    });
 });
+
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
