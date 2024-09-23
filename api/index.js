@@ -8,10 +8,7 @@ const app = express();
 const PORT = 5000;
 
 // Middleware
-const dir = './public/uploads';
-if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-}
+
 
 app.use(cors({
     origin: ["https://build-form-final-front.vercel.app"], 
