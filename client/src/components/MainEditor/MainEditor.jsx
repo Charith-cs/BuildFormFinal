@@ -81,14 +81,7 @@ const MainEditor = ({
                         onChange={(e) => setButtonText(e.target.value)}
                     />
 
-                    <input
-                        type="file"
-                        id="fileInput"
-                        name='upload'
-                        style={{ display: "none" }}
-                        accept="image/*"
-                        onChange={handleFileChange}
-                    />
+
 
                     <label htmlFor='file' className="upload">
                         <span><img src="./images/upload.png" alt="upload" />Upload</span>
