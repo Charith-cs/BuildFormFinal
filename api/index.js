@@ -47,9 +47,10 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-    console.error(err.stack);
+    console.error('Error:', err.message || err); // Log the error message
     res.status(500).send('Something broke!');
 });
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
