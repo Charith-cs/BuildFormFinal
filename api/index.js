@@ -44,7 +44,7 @@ app.post('/upload', (req, res) => {
     upload.single('file')(req, res, (err) => {
         if (err) {
             console.error('Multer error:', err);
-            return res.status(400).json({ error: 'File upload error' });
+            return res.status(400).json({'Multer error:', err});
         }
         console.log('File uploaded:', req.file);
         if (!req.file) {
