@@ -38,11 +38,15 @@ const upload = multer({
 });
 
 // Endpoint
-app.post('/upload', upload.single('file'), (req, res) => {
+/*app.post('/upload', upload.single('file'), (req, res) => {
     if (!req.file) {
         return res.status(400).json({ error: 'No file uploaded' });
     }
     res.json({ filePath: `uploads/${req.file.filename}` });
+});*/
+app.post('/upload', (req, res) => {
+    console.log('Upload request received:', req.body);
+    res.send('Upload endpoint hit');
 });
 
 // Error handling middleware
